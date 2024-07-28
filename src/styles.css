@@ -1,0 +1,31 @@
+
+.bg{
+    /* background-color: black; */
+}
+
+/* styles.css */
+.image-with-border {
+    border: 50px solid transparent;
+    /* Make the border solid and transparent */
+    border-image-source: url('./yellow.jpg');
+    /* Path to your border image */
+    border-image-slice: 30;
+    /* Adjust this value based on your border image */
+    border-image-width: 50px;
+    /* Adjust this value based on your border image */
+    border-image-outset: 0;
+    /* Adjust this value based on your border image */
+    border-image-repeat: stretch;
+    /* Adjust the repeat property based on your preference */
+}
+
+.container {
+    text-align: center;
+    width: fit-content;
+}
+
+.sub-container {
+    padding: 30px;
+    margin: 10px;
+    border: 1px solid black;
+}
