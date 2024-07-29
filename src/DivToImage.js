@@ -4,6 +4,8 @@ import { useRef } from 'react';
 import { usePDF } from 'react-to-pdf';
 import { useReactToPrint } from 'react-to-print';
 import './styles.css';
+import { useToImage } from '@hcorta/react-to-image';
+
 
 function DivToImage() {
   const divRef = useRef(null);
@@ -12,6 +14,8 @@ function DivToImage() {
   const handlePrint = useReactToPrint({
     content: () => divRef.current,
   });
+  const { ref, isLoading, getSvg } = useToImage()
+
 
   const handleConvert = async () => {
     if (divRef.current === null) {
@@ -35,14 +39,14 @@ function DivToImage() {
     <div className='bg'>
       <div className={'container'}>
         <div ref={targetRef}>
-          <div id='main' ref={divRef} className={'sub-container'}>
+          <div id='main' ref={ref} className={'sub-container'}>
             <h2>Image to Be Rendered</h2>
             <ImageWithBorder />
             <h3>Store Id: 15320</h3>
             <p>Pine Labs</p>
           </div>
         </div>
-        <button onClick={handleConvert}>Convert to Data URI</button>
+        <button onClick={getSvg}>Convert to Data URI</button>
         <button onClick={handlePrint}>Print</button>
         <button onClick={() => toPDF()}>Download PDF</button>
       </div>

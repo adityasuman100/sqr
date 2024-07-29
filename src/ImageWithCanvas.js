@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from 'react';
+import QrCode from './QrCode';
 
 function ImageWithBorder() {
   const canvasRef = useRef(null);
@@ -36,6 +37,21 @@ function ImageWithBorder() {
     };
   }, []);
 
+  const options={
+    ecLevel: "M", //The error correction level of the QR Code
+    enableCORS: false, //Enable crossorigin attribute
+    size: 250, //The size of the QR Code
+    quietZone: 10, //The size of the quiet zone around the QR Code. This will have the same color as QR Code bgColor
+    bgColor: "#FFFFFF", //Background color
+    fgColor: "#ebb434", //Foreground color
+    logoImage:
+      "https://cdn.search.brave.com/serp/v2/_app/immutable/assets/brave-logo-dark.Bg87GL4b.svg", //The logo image. It can be a url/path or a base64 value
+    logoWidth: 180,
+    logoHeight: 40,
+    logoOpacity: 1,
+    qrStyle: "squares", //Style of the QR Code modules - dots or squares
+  };
+
   return (
     <div>
       <canvas ref={canvasRef}></canvas>
@@ -45,6 +61,7 @@ function ImageWithBorder() {
         alt='Description'
         style={{ display: 'none' }}
       />
+      <QrCode options={options} url="https://google.com" />
     </div>
   );
 }
