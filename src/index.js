@@ -1,12 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './DivToImage';
+// import App from './DivToImage';
+import App from './ReactPdf/ReactPdf';
+import { renderToString } from 'react-dom/server';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <App />
+    <button
+      onClick={async () => {
+        // await renderToFile(<App />, `${__dirname}/my-doc.pdf`);
+        const value = await renderToString(<App />);
+        console.log(value);
+      }}
+    >
+      download pdf
+    </button>
   </React.StrictMode>
 );
 

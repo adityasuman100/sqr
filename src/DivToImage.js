@@ -14,7 +14,7 @@ function DivToImage() {
   const handlePrint = useReactToPrint({
     content: () => divRef.current,
   });
-  const { ref, isLoading, getSvg } = useToImage()
+  const { ref, isLoading, getSvg, dataURL, error } = useToImage()
 
 
   const handleConvert = async () => {
@@ -54,6 +54,11 @@ function DivToImage() {
       <div>
         <span>UPI ID: {upiIdDummy} </span>
         <button onClick={onCopyBtnClick}>Copy</button>
+      </div>
+      <div>
+        {isLoading && "Loading..."}
+        {error && JSON.stringify(error)}
+        {dataURL && JSON.stringify(dataURL)}
       </div>
     </div>
   );
