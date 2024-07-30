@@ -6,6 +6,7 @@ import {
   Document,
   StyleSheet,
   usePDF,
+  pdf,
 } from "@react-pdf/renderer";
 // Create styles
 const styles = StyleSheet.create({
@@ -19,6 +20,16 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
 });
+
+// Function to convert Blob to Base64
+const blobToBase64 = (blob) => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result.split(",")[1]);
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  });
+};
 
 function App() {
   function MyDoc() {
@@ -36,17 +47,30 @@ function App() {
       </Document>
     );
   }
-  const [instance, updateInstance] = usePDF({ document: MyDoc });
-  console.log("instance is ", instance);
+  const [base64, setBase64] = React.useState("");
+  const generateBase64 = async () => {
+    const blob = await pdf(<MyDoc />).toBlob();
+    const base64 = await blobToBase64(blob);
+    console.log(base64);
+    setBase64(base64);
+  };
+  const [instance, updateInstance] = usePDF({ document: <MyDoc /> });
+  // console.log("instance is ", instance);
+  // console.log("updateInstance is ", updateInstance);
+  // console.log("type of MyDoc ", typeof MyDoc);
+  // console.log("type of updateInstance is ", typeof updateInstance);
+  // console.log(renderToBuffer(MyDoc)); will not run in browser
   // const blob = pdf(MyDoc).toBlob();
   // console.log(blob);
   return (
     <div>
       <p>Hello</p>
+      <button onClick={() => generateBase64()}>Base64</button>
+      {instance.loading ? "loading" : <MyDoc />}
       {instance.blob && JSON.stringify(instance.blob)}
       {instance.error && JSON.stringify(instance.error)}
       {instance.blob && JSON.stringify(instance.blob)}
-      {/* <MyDoc /> */}
+      {base64 && JSON.stringify(base64)}
       {/* <BlobProvider document={MyDoc}>
         {({ blob, url, loading, error }) => {
           // Do whatever you need with blob here
