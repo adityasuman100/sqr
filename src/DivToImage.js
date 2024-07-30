@@ -14,7 +14,7 @@ function DivToImage() {
   const handlePrint = useReactToPrint({
     content: () => divRef.current,
   });
-  const { ref, isLoading, getSvg, dataURL, error } = useToImage()
+  const { ref, isLoading, getSvg, dataURL, error } = useToImage();
 
 
   const handleConvert = async () => {
