@@ -7,7 +7,6 @@ import {
   StyleSheet,
   usePDF,
   pdf,
-  PDFViewer,
 } from "@react-pdf/renderer";
 // Create styles
 const styles = StyleSheet.create({
@@ -35,27 +34,31 @@ const blobToBase64 = (blob) => {
 function App() {
   function MyDoc() {
     return (
-      <PDFViewer>
-        <Document>
-          <Page size="A4" style={styles.page}>
-            <View style={styles.section}>
-              <Text>Section #1</Text>
-            </View>
-            <View style={styles.section}>
-              {/* <Test /> */}
-              <Text>Section #2</Text>
-            </View>
-          </Page>
-        </Document>
-      </PDFViewer>
+      <Document>
+        <Page size="A4" style={styles.page}>
+          <View style={styles.section}>
+            <Text>Section #1</Text>
+            <Text>Section #1</Text>
+            <Text>Section #1</Text>
+            <Text>Section #1</Text>
+            <Text>Section #1</Text>
+            <Text>Section #1</Text>
+            <Text>Section #1</Text>
+          </View>
+          <View style={styles.section}>
+            {/* <Test /> */}
+            <Text>Section #2</Text>
+          </View>
+        </Page>
+      </Document>
     );
   }
-  const [base64, setBase64] = React.useState("");
+  // const [base64, setBase64] = React.useState("");
   const generateBase64 = async () => {
     const blob = await pdf(<MyDoc />).toBlob();
     const base64 = await blobToBase64(blob);
     console.log(base64);
-    setBase64(base64);
+    // setBase64(base64);
   };
   const [instance, updateInstance] = usePDF({ document: <MyDoc /> });
   // console.log("instance is ", instance);
@@ -68,13 +71,13 @@ function App() {
   return (
     <div>
       <p>Hello</p>
-      <MyDoc />
+      {/* <MyDoc /> */}
       <button onClick={() => generateBase64()}>Base64</button>
       {/* {instance.loading ? "loading" : <MyDoc />} */}
       {/* {instance.blob && JSON.stringify(instance.blob)}
       {instance.error && JSON.stringify(instance.error)}
       {instance.blob && JSON.stringify(instance.blob)} */}
-      {base64 && JSON.stringify(base64)}
+      {/* {base64 && JSON.stringify(base64)} */}
       {/* <BlobProvider document={MyDoc}>
         {({ blob, url, loading, error }) => {
           // Do whatever you need with blob here

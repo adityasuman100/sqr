@@ -1,21 +1,19 @@
 import ImageWithBorder from './ImageWithCanvas';
 import { toPng } from 'html-to-image';
 import { useRef } from 'react';
-import { usePDF } from 'react-to-pdf';
-import { useReactToPrint } from 'react-to-print';
-import './styles.css';
-import { useToImage } from '@hcorta/react-to-image';
-
+import { usePDF } from "react-to-pdf";
+import { useReactToPrint } from "react-to-print";
+import "./styles.css";
+import { useToImage } from "@hcorta/react-to-image";
 
 function DivToImage() {
   const divRef = useRef(null);
-  const { toPDF, targetRef } = usePDF({ filename: 'page.pdf' });
-  const upiIdDummy = 'abc-def@okhdfc';
+  const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
+  const upiIdDummy = "abc-def@okhdfc";
   const handlePrint = useReactToPrint({
     content: () => divRef.current,
   });
   const { ref, isLoading, getSvg, dataURL, error } = useToImage();
-
 
   const handleConvert = async () => {
     if (divRef.current === null) {
@@ -27,7 +25,7 @@ function DivToImage() {
       console.log(data.length);
       console.log(data);
     } catch (err) {
-      console.error('Failed to convert div to data URI:', err);
+      console.error("Failed to convert div to data URI:", err);
     }
   };
 
@@ -36,10 +34,10 @@ function DivToImage() {
   }
 
   return (
-    <div className='bg'>
-      <div className={'container'}>
+    <div className="bg">
+      <div className={"container"}>
         <div ref={targetRef}>
-          <div id='main' ref={ref} className={'sub-container'}>
+          <div id="main" ref={ref} className={"sub-container"}>
             <h2>Image to Be Rendered</h2>
             <ImageWithBorder />
             <h3>Store Id: 15320</h3>
