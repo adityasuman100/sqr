@@ -1,0 +1,10 @@
+.qrContainer{
+    width: fit-content;
+    border: 32px solid transparent;
+    border-image-source: url('/public/Border.jpg');
+    border-image-slice: 32;
+    /* border-image-width: 32px; */
+    border-image-outset: 0;
+    border-image-repeat: stretch;
+    /* border-image: url('/public/Border.jpg') 32 stretch; */
+}
