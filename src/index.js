@@ -3,11 +3,15 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from "./DivToImage";
 // import App from "./ReactPdf/ReactPdf";
+import Sqr from "./Sqr";
+import BasicDocument from "./components/BasicDocument";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    {/* <App /> */}
+    <Sqr />
+    {/* <BasicDocument /> */}
   </React.StrictMode>
 );
 

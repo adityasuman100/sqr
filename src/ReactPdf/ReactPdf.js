@@ -32,21 +32,15 @@ const blobToBase64 = (blob) => {
 };
 
 function App() {
-  function MyDoc() {
+  function MyDoc(props) {
     return (
       <Document>
         <Page size="A4" style={styles.page}>
           <View style={styles.section}>
             <Text>Section #1</Text>
-            <Text>Section #1</Text>
-            <Text>Section #1</Text>
-            <Text>Section #1</Text>
-            <Text>Section #1</Text>
-            <Text>Section #1</Text>
-            <Text>Section #1</Text>
           </View>
+          <View style={styles.section}>{props.qrCode}</View>
           <View style={styles.section}>
-            {/* <Test /> */}
             <Text>Section #2</Text>
           </View>
         </Page>
@@ -90,10 +84,6 @@ function App() {
       </BlobProvider> */}
     </div>
   );
-}
-
-function Test() {
-  return <div>Hello</div>;
 }
 
 export default App;

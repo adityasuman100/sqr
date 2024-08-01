@@ -37,14 +37,14 @@ function DivToImage() {
     <div className="bg">
       <div className={"container"}>
         <div ref={targetRef}>
-          <div id="main" ref={ref} className={"sub-container"}>
+          <div id="main" ref={divRef} className={"sub-container"}>
             <h2>Image to Be Rendered</h2>
             <ImageWithBorder />
             <h3>Store Id: 15320</h3>
             <p>Pine Labs</p>
           </div>
         </div>
-        <button onClick={getSvg}>Convert to Data URI</button>
+        <button onClick={handleConvert}>Convert to Data URI</button>
         <button onClick={handlePrint}>Print</button>
         <button onClick={() => toPDF()}>Download PDF</button>
       </div>
