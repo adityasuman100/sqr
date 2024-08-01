@@ -1,0 +1,17 @@
+.qrContainer{
+    /* width: 320px;
+    height: 320px; */
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background-image: url("/public/Border.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    /* border: 30px solid transparent; */
+    /* border-image-source: url("/public/Border.jpg"); */
+    /* border-image: url("/public/Border.jpg") 20 stretch; */
+    padding: 20px;
+}
